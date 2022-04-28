@@ -302,7 +302,6 @@ text = """
 Свои мне сказки говорил.
 """
 
-
 # text = text.lower()
 # text = text.replace(" ", "")
 # text = text.replace("\n", "")
@@ -1566,10 +1565,144 @@ text = """
 # LL.popleft()
 #
 # print(__len__(LL))
-array = str(input("Введите последовательность чисел через пробел: "))
 
-try:
-    test3num = map(int(array))
-    print("Это правильный ввод! Ваше счастливое число: ", test3num)
-except ValueError:
-    print("Это не правильный ввод. Это не число вообще! Это строка")
+# array = str(input("Введите последовательность чисел через пробел: "))
+#
+# try:
+#     test3num = map(int(array))
+#     print("Это правильный ввод! Ваше счастливое число: ", test3num)
+# except ValueError:
+#     print("Это не правильный ввод. Это не число вообще! Это строка")
+
+#
+# import requests
+#
+# r = requests.get(
+#     'https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html')  # делаем запрос на сервер по переданному адресу
+# print(r.content)
+
+#
+# import requests
+#
+# r = requests.get('https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html')
+# print(r.status_code)  # узнаем статус полученного ответа
+
+# import requests
+#
+# r = requests.get('https://baconipsum.com/api/?type=meat-and-filler')  # попробуем поймать json ответ
+# print(r.content)
+
+# import requests
+# import json  # импортируем необходимую библиотеку
+#
+# r = requests.get('https://baconipsum.com/api/?type=meat-and-filler')
+# texts = json.loads(r.content)  # делаем из полученных байтов python объект для удобной работы
+# print(type(texts))  # проверяем тип сконвертированных данных
+#
+# for text in texts:  # выводим полученный текст. Но для того чтобы он влез в консоль оставим только первые 50 символов.
+#     print(text)
+
+
+# import requests
+# import json
+#
+# r = requests.get('https://api.github.com')
+#
+# d = json.loads(r.content)  # делаем из полученных байтов python объект для удобной работы
+#
+# print(type(d)) print(d['followers_url'])  # обращаемся к полученному объекту как к словарю и попробуем напечатать
+# одно из его значений
+
+
+# import requests
+#
+# r = requests.post('https://httpbin.org/post', data={'key': 'value'})  # отправляем пост запрос
+# print(r.content)  # содержимое ответа и его обработка происходит так же, как и с гет-запросами, разницы никакой нет
+
+
+# import requests
+# import json
+#
+# data = {'key': 'value'}
+#
+# r = requests.post('https://httpbin.org/post', json=json.dumps(
+#     data))  # отправляем пост запрос, но только в этот раз тип передаваемых данных будет JSON
+# print(r.content)
+
+# import lxml.html
+# from lxml import etree
+#
+# # создадим объект ElementTree. Он возвращается функцией parse()
+# tree = etree.parse('Welcome to Python.org.html',
+#                    lxml.html.HTMLParser())  # попытаемся спарсить наш файл с помощью HTML-парсера. Сам HTML — это то,
+# # что мы скачали и поместили в папку из браузера.
+#
+# ul = tree.findall(
+#     'body/div/div[3]/div/section/div[3]/div[1]/div/ul/li')  # помещаем в аргумент методу findall скопированный xpath.
+# # Здесь мы получим все элементы списка новостей. (Все заголовки и их даты)
+#
+# # создаём цикл? в котором будем выводить название каждого элемента из списка
+# for li in ul:
+#     a = li.find(
+#         'a')  # в каждом элементе находим, где хранится заголовок новости. У нас это тег <a>. Т.е. гиперссылка,
+#     # на которую нужно нажать, чтобы перейти на страницу с новостью. Гиперссылки в HTML — это всегда тэг <a>.
+#     print(a.text)  # из этого тега забираем текст — это и будет нашим названием
+
+# import requests  # импортируем наш знакомый модуль
+# import lxml.html
+# from lxml import etree
+#
+# html = requests.get('https://www.python.org/').content  # получим html главной странички официального сайта python
+#
+# # создадим объект ElementTree. Он возвращается функцией parse()
+# tree = etree.parse('Welcome to Python.org.html',
+#                    lxml.html.HTMLParser())  # попытаемся спарсить наш файл с помощью html парсера
+#
+# ul = tree.findall(
+#     'body/div/div[3]/div/section/div[3]/div[1]/div/ul/li')  # помещаем в аргумент методу findall скопированный xpath
+#
+# # создаём цикл в котором мы будем выводить название каждого элемента из списка
+# for li in ul:
+#     a = li.find('a')  # в каждом элементе находим где хранится название. У нас это тег <a>
+#     time = li.find('time')
+#     print(time.get('datetime'), a.text)  # из этого тега забираем текст - это и будет нашим названием
+
+
+import redis
+# import json  # так-так-так, кто это тут у нас? Наш старый друг Джейсон заглянул на огонёк! Ну привет, чем ты сегодня нас порадуешь?
+#
+# red = redis.Redis(
+#     host='localhost',
+#     port=6379,
+# )
+#
+# red.delete('dict1') # удаляются ключи с помощью метода .delete()
+# print(red.get('dict1'))
+
+red = redis.Redis(
+    host='localhost',
+    port=6379
+)
+
+cont = True
+
+while cont:
+    action = input('action:\t')
+    if action == 'write':
+        name = input('name:\t')
+        phone = input('phone:\t')
+        red.set(name, phone)
+    elif action == 'read':
+        name = input('name:\t')
+        phone = red.get(name)
+        if phone:
+            print(f'{name}\'s phone is {str(phone)}')
+    elif action == 'delete':
+        name = input('name:\t')
+        phone = red.delete(name)
+        if phone:
+            print(f"{name}'s phone is deleted")
+        else:
+            print(f"Not found {name}")
+    elif action == 'stop':
+        break
