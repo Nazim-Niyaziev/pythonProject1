@@ -990,7 +990,7 @@ text = """
 #
 # print(list(map(str.upper, b)))
 
-# myFile = open('filename.txt', encoding="utf8")
+# myFile = open('ReadMe.txt', encoding="utf8")
 # print("--")
 # for line in myFile:
 #     print(line)
